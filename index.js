@@ -68,7 +68,7 @@ function myClickDecrypt() {
         console.log(shiftedAlphabet);
 
         // Смещенный алфавит со всеми допустимыми символами
-        shiftedAlphabet += + otherSymbols;
+        shiftedAlphabet += otherSymbols;
 
         // Алфавит со всеми допустимыми символами
         alphabet += otherSymbols;
@@ -106,7 +106,7 @@ function myClickDecrypt() {
         }
 
     }
-
+    
     if(lang == 2) {
         
         if (key >= 26 ) {
@@ -134,7 +134,7 @@ function myClickDecrypt() {
         console.log(shiftedAlphabet);
 
         // Смещенный алфавит со всеми допустимыми символами
-        shiftedAlphabet += + otherSymbols;
+        shiftedAlphabet += otherSymbols;
 
         // Алфавит со всеми допустимыми символами
         alphabet += otherSymbols;
