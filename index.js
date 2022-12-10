@@ -5,17 +5,19 @@ document.querySelector('button').onclick = myClick;
 
 document.querySelector('#btnDcr').onclick = myClickDecrypt;
 
-function myClickDecrypt(flag) {
+function myClickDecrypt() {
     console.log('нажата кнопка дешифровки');
     
     // Получаем значение ключа
     let a = document.querySelector('.i-1').value;
     let key = Number(a);
 
-    // Переменная userStr - строка, введенная пользователем.
-    let userStr = document.querySelector('.user_text').value;
+    console.log(`Ключ от плюзователя - ${key}`);
 
-    let lang;
+    // Переменная userStr - строка, введенная пользователем.
+    let userStr = document.querySelector('.user_text').value.toLowerCase();
+   
+    let lang = 0;
     // Русский - 1
     // Английский - 2
 
@@ -25,19 +27,12 @@ function myClickDecrypt(flag) {
             
         console.log( `lang = ${Number(lang)}`);
     }
-
-    if(document.querySelector('.lang_eng').checked) {
+    else if(document.querySelector('.lang_eng').checked) {
 
         lang = document.querySelector('.lang_eng').value;
             
         console.log( `lang = ${Number(lang)}`);
     }
-
-
-
-    // Переменная key - ключ, который пользователь должен ввести.
-
-    console.log(`Ключ от плюзователя - ${key}`);
 
     let output = "";
 
@@ -48,40 +43,38 @@ function myClickDecrypt(flag) {
 
     if(lang == 1) {
 
-        key = -1 * key;
         if (key >= 33 ) {
-            shift = key % 33;
-        } else {
-            shift = key;
+            shift = -1 * (key % 33);
+        }
+        else if(key <= -33) {
+            shift = -1 * (key % 33);
+        }
+        else {
+            shift = -1 * key;
         }
 
-        console.log(`Обработанный Ключ - ${shift}`);
-
+        console.log('Обработанный Ключ - ', shift);
 
         let alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-
-        let upperAlphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
 
         let otherSymbols = "\ \"\'\\/0123456789!?@#$%^&*`~.,-=+_";
 
         let firstPartOfStr = alphabet.slice(0, shift);
+        console.log(firstPartOfStr);
 
         let secondPartOfStr = alphabet.slice(shift);
-
+        console.log(secondPartOfStr);
         let shiftedAlphabet = secondPartOfStr + firstPartOfStr;
-
-        firstPartOfStr = upperAlphabet.slice(0, shift);
-
-        secondPartOfStr = upperAlphabet.slice(shift);
+        console.log(shiftedAlphabet);
 
         // Смещенный алфавит со всеми допустимыми символами
-        shiftedAlphabet += secondPartOfStr + firstPartOfStr + otherSymbols;
+        shiftedAlphabet += + otherSymbols;
 
         // Алфавит со всеми допустимыми символами
-        alphabet += upperAlphabet + otherSymbols;
-
+        alphabet += otherSymbols;
 
         // Проверка на соответствие  выбранному языку введеной пользователем строки
+
 
         // Счетчик, который будет сравнивать символы на соответствие языку
         let counter = 0;
@@ -95,10 +88,7 @@ function myClickDecrypt(flag) {
             }
         }
 
-
         console.log(`Кол-во символов в строке - ${userStr.length}, счетчик: ${counter}`);
-
-
 
         // Преобразование зашифрованной строки с кирилицей
         
@@ -119,36 +109,35 @@ function myClickDecrypt(flag) {
 
     if(lang == 2) {
         
-        key = -1 * key;
         if (key >= 26 ) {
-            shift = key % 26;
-        } else {
-            shift = key;
+            shift = -1 * (key % 26);
+        }
+        else if(key <= -26) {
+            shift = -1 * (key % 26);
+        }
+        else {
+            shift = -1 * key;
         }
 
         console.log(`Обработанный Ключ - ${shift}`);
 
         let alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-        let upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
         let otherSymbols = "\ \"\'\\/0123456789!?@#$%^&*`~.,-=+_";
 
         let firstPartOfStr = alphabet.slice(0, shift);
+        console.log(firstPartOfStr);
 
         let secondPartOfStr = alphabet.slice(shift);
-
+        console.log(secondPartOfStr);
         let shiftedAlphabet = secondPartOfStr + firstPartOfStr;
-
-        firstPartOfStr = upperAlphabet.slice(0, shift);
-
-        secondPartOfStr = upperAlphabet.slice(shift);
+        console.log(shiftedAlphabet);
 
         // Смещенный алфавит со всеми допустимыми символами
-        shiftedAlphabet += secondPartOfStr + firstPartOfStr + otherSymbols;
+        shiftedAlphabet += + otherSymbols;
 
         // Алфавит со всеми допустимыми символами
-        alphabet += upperAlphabet + otherSymbols;
+        alphabet += otherSymbols;
 
 
         // Проверка на соответствие  выбранному языку введеной пользователем строки
@@ -191,16 +180,19 @@ function myClickDecrypt(flag) {
 }
 
 
-function myClick(flag) {
+function myClick() {
 
     // Получаем значение ключа
     let a = document.querySelector('.i-1').value;
     let key = Number(a);
 
     // Переменная userStr - строка, введенная пользователем.
-    let userStr = document.querySelector('.user_text').value;
+    let userStr = document.querySelector('.user_text').value.toLowerCase();
 
-    let lang;
+ 
+    let output = "";
+
+    let lang = 0;
     // Русский - 1
     // Английский - 2
 
@@ -218,13 +210,16 @@ function myClick(flag) {
         console.log( `lang = ${Number(lang)}`);
     }
 
-
+    if(lang == 0) {
+        output = "Не выбран язык ввода!";
+            document.querySelector('.out').innerHTML = output;
+    }
 
     // Переменная key - ключ, который пользователь должен ввести.
 
     console.log(`Ключ от плюзователя - ${key}`);
-
-    let output = "";
+    console.log(-222 % 33);
+    
 
     let shift;
 
@@ -235,11 +230,15 @@ function myClick(flag) {
 
         if (key >= 33 ) {
             shift = key % 33;
-        } else {
-            shift = flag * key;
+        }
+        else if(key <= -33) {
+            shift = key % 33;
+        }
+        else {
+            shift = key;
         }
 
-        console.log(`Обработанный Ключ - ${shift}`);
+        console.log("Обработанный Ключ - ", shift);
 
 
         let alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
@@ -305,8 +304,12 @@ function myClick(flag) {
 
         if (key >= 26 ) {
             shift = key % 26;
-        } else {
-            shift = flag * key;
+        }
+        else if(key <= -26) {
+            shift = key % 26;
+        }
+        else {
+            shift = key;
         }
 
         console.log(`Обработанный Ключ - ${shift}`);
