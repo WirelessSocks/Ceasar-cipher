@@ -12,6 +12,12 @@ function myClickDecrypt() {
     let a = document.querySelector('.i-1').value;
     let key = Number(a);
 
+    if(isNaN(key)) {
+        output = "Ошибка ввода данных";
+        document.querySelector('.out').innerHTML = output;
+        return;
+    }
+
     console.log(`Ключ от плюзователя - ${key}`);
 
     // Переменная userStr - строка, введенная пользователем.
@@ -182,15 +188,23 @@ function myClickDecrypt() {
 
 function myClick() {
 
+    let output = "";
+
     // Получаем значение ключа
     let a = document.querySelector('.i-1').value;
     let key = Number(a);
+    console.log(typeof(key));
+
+    if(isNaN(key)) {
+        output = "Ошибка ввода данных";
+        document.querySelector('.out').innerHTML = output;
+        return;
+    }
 
     // Переменная userStr - строка, введенная пользователем.
     let userStr = document.querySelector('.user_text').value.toLowerCase();
 
  
-    let output = "";
 
     let lang = 0;
     // Русский - 1

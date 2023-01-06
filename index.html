@@ -44,7 +44,11 @@
 
     <section class="section">
 
-        <input type="number" pattern="\d*" class="i-1" id="key"><br>
+        <!-- <input type="number" pattern="\d*" class="i-1" id="key"><br> -->
+        
+        <!-- <input type="number" class="i-1" id="check" step="any"/><br> -->
+        <!-- <form><input type="number" ></form> -->
+        <form><input inputmode="decimal" class="i-1" pattern="-?(\d+|\d+.\d+|.\d+)([eE][-+]?\d+)?"></form>
 
         <button class="btnEncypt">Encrypt</button>
 
