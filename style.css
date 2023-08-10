@@ -60,11 +60,18 @@ input, textArea, select {
 }
 
 button {
-
+    cursor: pointer;
     width: 320px;
     height: 60px;
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.5rem;
+    background-color: #afafaf85;
+
+}
+
+button:hover {
+    background-color: #afafaf;
+
 }
 
 .out {
